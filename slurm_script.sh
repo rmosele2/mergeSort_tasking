@@ -17,10 +17,10 @@ do
   echo "Array size: $size" >> results.txt
 
   echo -n "Sequential: " >> results.txt
-  $HOME/ITCS4145/mergeSort/mergesort_seq $size >> results.txt
+  $HOME/ITCS4145/mergeSort_tasking/mergesort_seq $size >> results.txt
 
   echo -n "Parallel: " >> results.txt
-  $HOME/ITCS4145/mergeSort/mergesort_par $size >> results.txt
+  $HOME/ITCS4145/mergeSort_tasking/mergesort_par $size >> results.txt
 
   echo "" >> results.txt
 done

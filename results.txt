@@ -1,0 +1,25 @@
+Benchmarking Parallel vs Sequential Merge Sort
+Array size: 100
+Sequential: 4.413e-06
+Parallel: Elapsed time: 4.625e-06 seconds
+
+Array size: 1000
+Sequential: 4.8564e-05
+Parallel: Elapsed time: 4.9945e-05 seconds
+
+Array size: 10000
+Sequential: 0.000626447
+Parallel: Elapsed time: 0.00120175 seconds
+
+Array size: 100000
+Sequential: 0.00774446
+Parallel: Elapsed time: 0.0113959 seconds
+
+Array size: 1000000
+Sequential: 0.0894277
+Parallel: Elapsed time: 0.139463 seconds
+
+Array size: 10000000
+Sequential: 1.04531
+Parallel: Elapsed time: 1.48333 seconds
+
