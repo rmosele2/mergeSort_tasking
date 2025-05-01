@@ -2,22 +2,31 @@ CFLAGS=-O3 -std=c11 -fPIC -g
 CXXFLAGS=-O3 -std=c++17 -fPIC -g
 LD=g++
 
+all: mergesort_seq mergesort_par
 
-all: mergesort_seq
+# Sequential version
+mergesort_seq: mergesort_seq_nocopy.o
+	$(LD) $(LDFLAGS) mergesort_seq_nocopy.o $(ARCHIVES) -o mergesort_seq
 
+mergesort_seq_nocopy.o: mergesort_seq_nocopy.cpp
+	$(CXX) $(CXXFLAGS) -c mergesort_seq_nocopy.cpp
 
-mergesort_seq: mergesort_seq.o
-	$(LD) $(LDFLAGS) mergesort_seq.o $(ARCHIVES) -o mergesort_seq
+# Parallel version
+mergesort_par: mergesort_parallel.o
+	$(LD) $(LDFLAGS) mergesort_parallel.o $(ARCHIVES) -o mergesort_par
 
+mergesort_parallel.o: mergesort_parallel.cpp
+	$(CXX) $(CXXFLAGS) -c mergesort_parallel.cpp
 
-bench: mergesort_seq
+# Benchmark target
+bench: mergesort_seq mergesort_par
 	./queue.sh
 
+# Clean targets
 clean:
-	-rm *.o
-	-rm mergesort_seq
+	-rm -f *.o mergesort_seq mergesort_par
 
 distclean:
-	-rm *.sh.*
+	-rm -f *.sh.*
 
-.PHONY:  mergesort_seq
+.PHONY: all clean distclean bench
